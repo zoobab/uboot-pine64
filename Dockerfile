@@ -17,5 +17,5 @@ RUN tar -xf u-boot-2016.09.tar.bz2
 
 WORKDIR /home/$user/u-boot-2016.09
 ENV CROSS_COMPILE aarch64-linux-gnu-
-RUN set -e ; make pine64_plus_defconfig
-RUN set -e ; make
+RUN make pine64_plus_defconfig
+RUN make
