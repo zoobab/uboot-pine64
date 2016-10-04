@@ -12,10 +12,15 @@ RUN chmod 0440 /etc/sudoers.d/$user
 USER $user
 WORKDIR /home/$user
 
-RUN wget ftp://ftp.denx.de/pub/u-boot/u-boot-2016.09.tar.bz2
-RUN tar -xf u-boot-2016.09.tar.bz2
+# We will use apritzel patched version with TFTP support, will wait for uptream
+# version of next month...
+#RUN wget ftp://ftp.denx.de/pub/u-boot/u-boot-2016.09.tar.bz2
+#RUN tar -xf u-boot-2016.09.tar.bz2
 
-WORKDIR /home/$user/u-boot-2016.09
+RUN wget https://github.com/apritzel/u-boot/archive/pine64.tar.gz
+RUN tar -xf pine64.tar.gz
+
+WORKDIR /home/$user/u-boot-pine64
 ENV CROSS_COMPILE aarch64-linux-gnu-
 RUN make pine64_plus_defconfig
 RUN make
