@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t uboot-pine64 .
+docker build --no-cache -t uboot-pine64 .
