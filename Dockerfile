@@ -19,9 +19,10 @@ WORKDIR /home/$user/arm-trusted-firmware
 RUN git checkout allwinner
 RUN make PLAT=sun50iw1p1 DEBUG=1 bl31
 
+WORKDIR /home/$user
 RUN git clone https://github.com/apritzel/u-boot
-RUN cd u-boot && git checkout 4482cfb5d3747eebb3ff6000937b24f885de4bf6
 
 WORKDIR /home/$user/u-boot
+RUN git checkout 4482cfb5d3747eebb3ff6000937b24f885de4bf6
 RUN make pine64_plus_defconfig
 RUN make
