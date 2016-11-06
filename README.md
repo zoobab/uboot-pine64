@@ -26,4 +26,16 @@ Automated built image is here (around 580MB):
 $ docker pull zoobab/uboot-pine64
 ```
 
+Copy to a MicroSD card
+======================
 
+```
+$ dd if=bin/pine64.img of=/dev/sdx bs=64k
+```
+
+where sdx is you microsd device.
+
+Links
+=====
+
+* https://github.com/apritzel/pine64
