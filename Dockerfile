@@ -22,7 +22,7 @@ RUN make PLAT=sun50iw1p1 DEBUG=1 bl31
 WORKDIR /home/$user
 RUN git clone https://github.com/zoobab/u-boot-pine64
 
-WORKDIR /home/$user/u-boot
+WORKDIR /home/$user/u-boot-pine64
 RUN git checkout 4482cfb5d3747eebb3ff6000937b24f885de4bf6
 RUN make pine64_plus_defconfig
 RUN make
