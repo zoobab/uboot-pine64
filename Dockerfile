@@ -16,7 +16,7 @@ ENV CROSS_COMPILE=aarch64-linux-gnu-
 
 RUN git clone https://github.com/apritzel/arm-trusted-firmware.git
 WORKDIR /home/$user/arm-trusted-firmware
-RUN git checkout allwinner
+RUN git checkout e70dd6ebe65d62d4d4d5873c3d2c900fe5633313
 RUN make PLAT=sun50iw1p1 DEBUG=1 bl31
 
 WORKDIR /home/$user
