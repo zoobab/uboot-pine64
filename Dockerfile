@@ -12,15 +12,16 @@ RUN chmod 0440 /etc/sudoers.d/$user
 USER $user
 WORKDIR /home/$user
 
-# We will use apritzel patched version with TFTP support, will wait for uptream
-# version of next month...
-#RUN wget ftp://ftp.denx.de/pub/u-boot/u-boot-2016.09.tar.bz2
-#RUN tar -xf u-boot-2016.09.tar.bz2
+ENV CROSS_COMPILE=aarch64-linux-gnu-
+
+RUN git clone https://github.com/apritzel/arm-trusted-firmware.git
+WORKDIR /home/$user/arm-trusted-firmware
+RUN git checkout allwinner
+RUN make PLAT=sun50iw1p1 DEBUG=1 bl31
 
 RUN git clone https://github.com/apritzel/u-boot
 RUN cd u-boot && git checkout 4482cfb5d3747eebb3ff6000937b24f885de4bf6
 
 WORKDIR /home/$user/u-boot
-ENV CROSS_COMPILE aarch64-linux-gnu-
 RUN make pine64_plus_defconfig
 RUN make
